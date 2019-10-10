@@ -1,0 +1,17 @@
+.formContainer{
+
+    border: 1px solid black;
+    padding: 20px;
+    box-shadow:3px 3px 5px 6px #cccccc;
+
+}
+
+.buttomContainer{
+    text-align: center;
+}
+
+.buttomItem {
+    width: 100px;
+    margin: 10px;
+    box-shadow:3px 3px 5px 6px #cccccc;
+}

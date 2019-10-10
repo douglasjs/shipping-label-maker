@@ -1,33 +1,30 @@
 import React from 'react';
+import './index.css';
 
+import GetAddress from '../../../features/shipping-label-maker/steps/getAddress';
+//import GetWeight from '../../../features/shipping-label-maker/steps/getWeight';
 
 export function Wizard(props) {
    
 
     const header = ()=>{
-
         return 'Enter the recevier\'s address:';
     }
 
    
-
-    //console.log(props);
     const pStyle = {
         width: '25%',
         widthText: '25%'
     };
+
       
 
     return (
 
     
-          <div className="jumbotron">
+          <div>
 
-               
-
-                
-
-                <div className = 'container border rounded'>
+                <div className = 'container formContainer'>
                         
                     <h2>Shipping Label Maker</h2>
 
@@ -39,42 +36,16 @@ export function Wizard(props) {
 
                     <p></p>
 
-                    <h3>{header()}</h3>
+                    <GetAddress header= {header}/>
 
-                    <p></p>
-               
-                    <div className="form-group">
-                        <label htmlFor="nameHelp">Full Name</label>
-                        <input type="text" className="form-control" id="nameHelp" aria-describedby="nameHelp" placeholder="Please enter full name" />
-                        <small id="nameHelp" className="form-text text-muted">Family name is in last.</small>
-                    </div>
-    
-                    <div className="form-group">
-                        <label htmlFor="addressHelp">Address</label>
-                        <input type="text" className="form-control" id="addressHelp" aria-describedby="addressHelp" placeholder="Please enter your address" />
-                        <small id="addressHelp" className="form-text text-muted">We'll never share your address with anyone else.</small>
-                    </div>
-                
-                    <div className="row">
-                        <div className="form-group col-sm-6">
-                            <label htmlFor="cityHelp">City</label>
-                            <input type="text" className="form-control" id="cityHelp" aria-describedby="cityHelp" placeholder="Please enter your city" />
-                        </div>
-                        <div className="form-group col-sm-3">
-                            <label htmlFor="stateHelp">State</label>
-                            <input type="text" className="form-control" id="stateHelp" aria-describedby="stateHelp" placeholder="Your state" />
-                        </div>
-                        <div className="form-group col-sm-3">
-                            <label htmlFor="zipHelp">Zip</label>
-                            <input type="text" className="form-control" id="zipHelp" aria-describedby="zipHelp" placeholder="Your Zip Code" />
-                        </div>
-                    </div>
-                    <div class="btn-group" role="group" >
+
+                    <div className='buttomContainer'>
                         
-                        <button type="button" className="btn btn-primary">Previous</button>
-                        <button type="button" className="btn btn-primary">Next</button>
+                        <button type="button" className="btn btn-primary buttomItem">Previous</button>
+                        <button type="button" className="btn btn-primary buttomItem">Next</button>
                         
                     </div>
+
                 </div>
    
                 

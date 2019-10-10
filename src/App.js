@@ -34,8 +34,7 @@ class App extends React.Component {
 
     return (
     
-      <div> 
-
+      <div className="jumbotron"> 
 
           <BrowserRouter>
             <Switch>
