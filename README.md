@@ -1,5 +1,27 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Projet Name 
+Shipping-Label-Maker
+
+## Author
+Douglas
+
+## Description
+
+The main idea is to store all-state in the parent component - app.js.
+All child components can share information and function. In the wizard 
+component, I also use the reference to call child function in the parent 
+component. For the asynchronous, I also use the callback in the 
+wizard component.
+
+If I have more time, I can make it more perfect.
+
+## Install 
+
+npm install
+
+
 ## Available Scripts
 
 In the project directory, you can run:

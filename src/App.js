@@ -15,33 +15,48 @@ class App extends React.Component {
       this.state = {
           wizardContext : {
             from: {
-            name: '', street: '', city: '',
-            state: '',
-            zip: ''
-            }, to: {
-            name: '', street: '', city: '', state: '',
-            zip: '' },
-            weight: 0,
-            shippingOption: 0 },
+              name: '', street: '', city: '',
+              state: '',
+              zip: ''
+              }, 
+            to: {
+              name: '', street: '', city: '', state: '',
+              zip: '' },
+              weight: 0,
+              shippingOption: 0, 
+              shippingCost: 0},
             
-          onComplete: false
+          onComplete: false,
+          currectStep : 1,
       };
 
   }
 
+  setAllState = (stateName, state, callback) =>{
+   
+      this.setState({...this.state, [stateName] : state}, callback);
+  }
+
+
+
 
   render(){
 
+    console.log(this.state);
     return (
     
       <div className="jumbotron"> 
 
-          <BrowserRouter>
-            <Switch>
-              <Route exact={true} path="/" component={() => <Wizard wizardContext={this.state.wizardContext} />} />
-              <Route path="/print" component = {ShippingLabel} />
-            </Switch>
-          </BrowserRouter>
+          {this.state.onComplete ? <ShippingLabel  highState={this.state}/> :
+            <BrowserRouter>
+              <Switch>
+                <Route exact={true} path="/" component={() => <Wizard highState={this.state} setAllState={this.setAllState}/>} />
+                <Route path="/print" component = {ShippingLabel} highState={this.state} />
+              
+              </Switch>
+            </BrowserRouter> 
+       
+          }
       </div>
     );
 
