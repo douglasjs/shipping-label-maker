@@ -12,6 +12,13 @@ export default class GetShippingOption extends React.Component{
 
     }
 
+    componentDidMount(){
+        const shippingOption = this.props.wizardContext.shippingOption;
+        const shippingCost = this.props.wizardContext.shippingCost;
+        this.setState({  shippingOption, shippingCost });
+    }
+
+
     shippingCost = (shippingOption, weight) =>{
 
 
@@ -25,20 +32,27 @@ export default class GetShippingOption extends React.Component{
         const optionValue = e.target.value;
         const weight = this.props.wizardContext.weight;
         const cost = this.shippingCost(optionValue, weight);
-        this.setState({...this.state, shippingOption : optionValue, shippingCost :cost });
+        this.setState({...this.state, shippingOption : optionValue, shippingCost :cost, invalidate : '' });
     }
 
-    getAsync = (callback) => {
+    getAsync = (btnState, callback) => {
 
-
-        this.props.setAllState('wizardContext' , {...this.props.wizardContext, 
+        if(this.checkValue() || btnState==='pre' ){
+            this.props.setAllState('wizardContext' , {...this.props.wizardContext, 
                                                    shippingOption : this.state.shippingOption,
                                                    shippingCost:this.state.shippingCost  }, callback );
+        }else{
+            this.setState({...this.state, invalidate : 'is-invalid'});
+        }
+    }
+    checkValue = () =>{
+
+        return this.state.shippingOption === 0 ? false : true;
     }
 
     render(){
 
-        console.log(this.state);
+  
         return(
 
             <div>
@@ -51,11 +65,12 @@ export default class GetShippingOption extends React.Component{
     
                 <div className="form-group">
                        <label htmlFor="address">Shopping Option</label>
-                       <select className="form-control" id="shippingOption" onChange={this.shippingOptionHandle} value ={this.state.shippingOption}>
+                       <select className={`form-control ${this.state.invalidate}`} id="shippingOption" onChange={this.shippingOptionHandle} value ={this.state.shippingOption}>
                             <option value="0">Please Choose one option ....</option>
                             <option value="1">Grand</option>
                             <option value="2">Priority</option>
                         </select>
+                       <div className="invalid-feedback">Please choose one of options.</div>
                        <small id="shippingOptionHelp" className="form-text text-muted">The cost will change by the shopping optine.</small>
                 </div>
     

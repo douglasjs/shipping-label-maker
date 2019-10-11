@@ -1,14 +1,15 @@
 import React from 'react';
 
-export default class Comfirm extends React.Component{
+export default class Confirm extends React.Component{
 
 
 
-    getAsync = (callback) => {
+    getAsync = (btnState, callback) => {
 
         this.props.setAllState('wizardContext' , {...this.props.wizardContext}, callback );
     }
 
+   
 
     render(){
 
@@ -20,7 +21,7 @@ export default class Comfirm extends React.Component{
   
                 <p></p>
 
-                <h3>{this.props.header}</h3>
+                <h3 className='no-print'>{this.props.header}</h3>
 
                 <p></p>
 

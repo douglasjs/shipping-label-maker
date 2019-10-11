@@ -4,6 +4,11 @@ import React from 'react';
 export class ShippingLabel extends React.Component{
 
 
+    print = () => {
+        window.document.body.innerHTML = window.document.getElementById('shippingTag').innerHTML;  
+        window.print(); 
+        window.location.reload();
+    }
 
 
     render(){
@@ -14,7 +19,8 @@ export class ShippingLabel extends React.Component{
 
         return(
 
-            <div>
+               <div id = 'shippingTag'>
+                    <button className='no-print' onClick={this.print} >Print</button>
                     <div className = 'container formContainer'>
                           
                           <h2>Shipping Label</h2>
@@ -80,8 +86,10 @@ export class ShippingLabel extends React.Component{
                             </div>
   
                     </div>
-                    {window.print()}
+                    {from && window.print()}
+                    
             </div>
+    
 
         )
 

@@ -15,7 +15,11 @@ component, I also use the reference to call child function in the parent
 component. For the asynchronous, I also use the callback in the 
 wizard component.
 
-If I have more time, I can make it more perfect.
+## Update
+1.add login high order component
+2.add validation in all steps
+3.fixed some bugs
+
 
 ## Install 
 
